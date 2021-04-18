@@ -1,10 +1,15 @@
+use chrono::prelude::*;
+
 fn main() {
     let args: Vec<String> = std::env::args().collect();
 
     // Hakkında
     if args.len() < 2 {
-        println!("iftar v0.1.0 by omerakgoz34");
-        println!("Kullanım: iftar <şehir>");
+        println!("");
+        println!("* iftar v{} by omerakgoz34", env!("CARGO_PKG_VERSION"));
+        println!("* Kullanım: iftar <şehir>");
+        println!("* NOT: İftar vakti her gece 00:00'dan sonra yenilenir.");
+        println!("* Hata bildirimi: https://github.com/omerakgoz34/iftar/issues/new");
         return
     }
 
@@ -95,27 +100,74 @@ fn main() {
     cities.insert("yozgat", "9949");
     cities.insert("zonguldak", "9955");
     
-
-
-    let mut city_code = "0";
+    // Şehir kodu
     let city = args[1].to_owned();
-    match cities.get(&city[..]) {
-        Some(&res) => city_code = res,
+    let city_code = match cities.get(&city[..]) {
+        Some(&res) => res,
         _ => {
             println!("");
-            println!("Girdiğiniz şehir bulunamadı!");
+            println!(">>> HATA: Girdiğiniz şehir bulunamadı! İsimleri bitişik ve küçük harflerle yazınız.");
+            return;
         },
+    };
+
+    // Final URL
+    let url = &(url_diyanet.to_owned() + city_code)[..];
+    let response = match  minreq::get(url).send() {
+        Ok(res) => res,
+        Err(_) => {
+            println!("");
+            println!(">>> HATA: Sunucuya bağlanılamadı! İnternete bağlı olduğunuzdan emin olunuz.");
+            return;
+        },
+    };
+
+    // Sunucudan gelen yanıtı yazıya çevirme
+    let response = match response.as_str() {
+        Ok(res) => res,
+        Err(_) => {
+            println!("");
+            println!(">>> HATA: Sunucudan alınan veri okunamadı! (UTF-8 hatası)");
+            return;
+        },
+    };
+
+    // CSS selector kullanarak iftar saati bilgisini bulma
+    let fragment = scraper::Html::parse_fragment(response);
+    let iftar = fragment.select(&match scraper::Selector::parse("div.tpt-cell[data-vakit-name='aksam'] .tpt-time") {
+        Ok(res) => res,
+        Err(_) => {
+            println!("");
+            println!(">>> HATA: İftar saati bulunamadı! Bu hatayı yapımcıya bildirmeniz önerilir.");
+            return;
+        },
+    }).next().unwrap().inner_html();
+
+    // Zaman hesaplamaları
+    let now = Local::now();
+    let iftar_split: Vec<&str> = iftar.split(":").collect();
+    let iftar_time = Local.ymd(now.year(), now.month(), now.day()).and_hms(iftar_split[0].parse::<u32>().unwrap(), iftar_split[1].parse::<u32>().unwrap(), 0);
+    
+    #[cfg(debug_assertions)]
+    {
+        println!("iftar_time: {}", iftar_time);
+        println!("now: {}", now);
+        println!("kalan: {}", Local.timestamp(iftar_time.timestamp() - now.timestamp(), 0));
+        println!("geçen: {}", Local.timestamp(now.timestamp() - iftar_time.timestamp(), 0));
     }
-    if city_code == "0" { return }
 
-    let mut url: String = url_diyanet.to_owned();
-    url.push_str(city_code);
-    let response = minreq::get(url).send().unwrap();
-
-    let fragment = scraper::Html::parse_fragment(response.as_str().unwrap());
-    let iftar = fragment.select(&scraper::Selector::parse("div.tpt-cell[data-vakit-name='aksam'] .tpt-time").unwrap()).next().unwrap().inner_html();
-
-    println!("");
-    println!("Şehir: {}", city);
-    println!("İftar vakti: {}", iftar);
+    // İftara daha vakit var
+    if now < iftar_time {
+        let remaining_time = Local.timestamp(iftar_time.timestamp() - now.timestamp(), 0);
+        println!("");
+        println!("* Şehir: {}", city);
+        println!("* İftar vakti: {}", iftar);
+        println!("* Kalan süre: {} saat {} dakika", remaining_time.hour() - 2, remaining_time.minute() + 1);
+    }
+    // İftar geçti
+    if now > iftar_time {
+        println!("");
+        println!("* Şehir: {}", city);
+        println!("* İftar vakti: {} (geçti)", iftar);
+    }
 }
