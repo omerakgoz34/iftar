@@ -98,8 +98,9 @@ fn main() {
 
 
     let mut city_code = "0";
-    match cities.get(&args[1][..]) {
-        Some(&city) => city_code = city,
+    let city = args[1].to_owned();
+    match cities.get(&city[..]) {
+        Some(&res) => city_code = res,
         _ => {
             println!("");
             println!("Girdiğiniz şehir bulunamadı!");
@@ -112,7 +113,9 @@ fn main() {
     let response = minreq::get(url).send().unwrap();
 
     let fragment = scraper::Html::parse_fragment(response.as_str().unwrap());
-    let selector = scraper::Selector::parse("div.tpt-cell[data-vakit-name='aksam'] .tpt-time").unwrap();
+    let iftar = fragment.select(&scraper::Selector::parse("div.tpt-cell[data-vakit-name='aksam'] .tpt-time").unwrap()).next().unwrap().inner_html();
 
-    println!("{}: {}", args[1], fragment.select(&selector).next().unwrap().inner_html());
+    println!("");
+    println!("Şehir: {}", city);
+    println!("İftar vakti: {}", iftar);
 }
