@@ -1,0 +1,30 @@
+name: "BUILD: macOS"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Rust
+      uses: actions/setup-rust@v2
+      with:
+        rust-version: 1.58.1
+
+    - name: Build
+      run: cargo build
+
+    - name: Binary
+      uses: actions/upload-artifact@v2
+      with:
+        name: iftar_macos
+        path: iftar
