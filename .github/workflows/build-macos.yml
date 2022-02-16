@@ -8,12 +8,17 @@ on:
   workflow_dispatch:
     branches: [ main ]
 
-jobs:
+env:
+  CARGO_TERM_COLOR: always
 
+jobs:
   build:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
+
+    - name: Rust Version
+      run: rustc -vV
 
     - name: Build
       run: cargo build
@@ -21,5 +26,5 @@ jobs:
     - name: Upload Binary
       uses: actions/upload-artifact@v2
       with:
-        name: iftar_macos
-        path: iftar
+        name: iftar
+        path: target/build
