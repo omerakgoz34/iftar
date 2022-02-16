@@ -26,5 +26,5 @@ jobs:
     - name: Upload Binary
       uses: actions/upload-artifact@v2
       with:
-        name: iftar
-        path: target/build
+        name: iftar_macos
+        path: target/build/iftar
