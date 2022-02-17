@@ -1,0 +1,33 @@
+name: "BUILD Release: Windows"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    branches: [ main ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Rust Version
+      run: rustc -vV
+
+    - name: Install Binutils
+      run: cargo install cargo-binutils
+
+    - name: Build
+      run: cargo strip --release -- -s -w
+
+    - name: Upload Binary
+      uses: actions/upload-artifact@v2
+      with:
+        name: iftar_windows
+        path: target/release/iftar.exe
