@@ -20,7 +20,7 @@ jobs:
     - name: Install Rust
       uses: actions-rs/toolchain@v1
       with:
-            profile: complete
+            profile: default
             toolchain: stable-x86_64-apple-darwin
             override: true
             components: llvm-tools-preview
@@ -38,4 +38,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: iftar_macos
-        path: target/debug/iftar
+        path: target/release/iftar

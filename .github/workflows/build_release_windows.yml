@@ -20,7 +20,7 @@ jobs:
     - name: Install Rust
       uses: actions-rs/toolchain@v1
       with:
-            profile: complete
+            profile: default
             toolchain: stable-x86_64-pc-windows-gnu
             override: true
             components: llvm-tools-preview
