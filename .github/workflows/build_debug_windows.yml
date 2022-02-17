@@ -21,7 +21,8 @@ jobs:
       uses: actions-rs/toolchain@v1
       with:
             profile: default
-            toolchain: x86_64-pc-windows-gnu
+            toolchain: stable
+            target: x86_64-pc-windows-gnu
             override: true
 
     - name: Rust Version
