@@ -17,6 +17,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+            profile: default
+            toolchain: x86_64-pc-windows-gnu
+            override: true
+
     - name: Rust Version
       run: rustc -vV
 

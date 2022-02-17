@@ -17,16 +17,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Rust Version
-      run: rustc -vV
-
     - name: Install Rust
       uses: actions-rs/toolchain@v1
       with:
-            toolchain: stable
-            target: x86_64-pc-windows-gnu
             profile: complete
+            toolchain: x86_64-pc-windows-gnu
             override: true
+            components: llvm-tools-preview
+
+    - name: Rust Version
+      run: rustc -vV
       
     - name: Install Cargo Binutils
       run: cargo install cargo-binutils

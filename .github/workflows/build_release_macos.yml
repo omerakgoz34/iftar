@@ -1,4 +1,4 @@
-name: "BUILD Debug: macOS"
+name: "BUILD Release: macOS"
 
 on:
   push:
@@ -20,15 +20,19 @@ jobs:
     - name: Install Rust
       uses: actions-rs/toolchain@v1
       with:
-            profile: default
+            profile: complete
             toolchain: x86_64-apple-darwin
             override: true
+            components: llvm-tools-preview
 
     - name: Rust Version
       run: rustc -vV
 
+    - name: Install Cargo Binutils
+      run: cargo install cargo-binutils
+
     - name: Build
-      run: cargo build
+      run: cargo strip --release -- -s -w
 
     - name: Upload Binary
       uses: actions/upload-artifact@v2
