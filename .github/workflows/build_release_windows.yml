@@ -21,7 +21,7 @@ jobs:
       uses: actions-rs/toolchain@v1
       with:
             profile: complete
-            toolchain: x86_64-pc-windows-gnu
+            toolchain: stable-x86_64-pc-windows-gnu
             override: true
             components: llvm-tools-preview
 
