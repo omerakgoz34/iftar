@@ -1,10 +1,6 @@
 name: "BUILD Release: Windows"
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
     branches: [ main ]
 
