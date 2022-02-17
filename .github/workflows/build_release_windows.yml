@@ -20,7 +20,15 @@ jobs:
     - name: Rust Version
       run: rustc -vV
 
-    - name: Install Binutils
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+            toolchain: stable
+            target: x86_64-pc-windows-gnu
+            profile: complete
+            override: true
+      
+    - name: Install Cargo Binutils
       run: cargo install cargo-binutils
 
     - name: Build
