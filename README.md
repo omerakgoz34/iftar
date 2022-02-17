@@ -3,9 +3,9 @@
 **İftar vaktini öğrenebileceğiniz küçük bir komut satırı programı**
 
 ## İndirme Linkleri:
-[Windows](https://github.com/omerakgoz34/iftar/releases/download/v0.1.1/iftar_windows.zip)  
-[Linux](https://github.com/omerakgoz34/iftar/releases/download/v0.1.1/iftar_linux.zip)  
-[macOS](https://github.com/omerakgoz34/iftar/releases/download/v0.1.1/iftar_macos.zip)
+[Windows v0.1.1](https://github.com/omerakgoz34/iftar/releases/download/v0.1.1/iftar_v0.1.1_windows.zip)  
+[Linux v0.1.1](https://github.com/omerakgoz34/iftar/releases/download/v0.1.1/iftar_v0.1.1_linux.zip)  
+[macOS v0.1.1](https://github.com/omerakgoz34/iftar/releases/download/v0.1.1/iftar_v0.1.1_macos.zip)
 
 ## Özellikler
 
