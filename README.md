@@ -21,4 +21,4 @@
 ![Screenshot_210](https://user-images.githubusercontent.com/49201485/115162747-e4012a00-a0ad-11eb-9ef9-548aba4a9ff4.png)
 
 ## Termux Örneği
-https://youtube.com/shorts/ylO8gvy6FoM?feature=share
+https://youtu.be/tT9vjz2a9tM
