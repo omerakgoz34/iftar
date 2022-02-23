@@ -20,12 +20,6 @@ jobs:
             toolchain: stable-x86_64-pc-windows-msvc
             override: true
 
-    - name: Rust Version
-      run: rustc -vV
-      
-    - name: Install Cargo Binutils
-      run: cargo install cargo-binutils
-
     - name: Build
       run: cargo build --release
 
