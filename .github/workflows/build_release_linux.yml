@@ -19,16 +19,9 @@ jobs:
             profile: default
             toolchain: stable-x86_64-unknown-linux-gnu
             override: true
-            components: llvm-tools-preview
-
-    - name: Rust Version
-      run: rustc -vV
-      
-    - name: Install Cargo Binutils
-      run: cargo install cargo-binutils
 
     - name: Build
-      run: cargo strip --release -- -s -w
+      run: cargo build --release
 
     - name: Upload Binary
       uses: actions/upload-artifact@v2

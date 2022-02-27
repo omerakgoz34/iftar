@@ -9,7 +9,7 @@ fn main() {
         println!("* iftar v{} by omerakgoz34", env!("CARGO_PKG_VERSION"));
         println!("* Kullanım: iftar <şehir>");
         println!("* NOT: İftar vakti her gece 00:00'dan sonra yenilenir.");
-        println!("* Hata bildirimi: https://github.com/omerakgoz34/iftar/issues/new");
+        println!("* Hata bildirimi ve sorular için: https://github.com/omerakgoz34/iftar/issues/new");
         return
     }
 
@@ -136,14 +136,15 @@ fn main() {
 
     // CSS selector kullanarak iftar saati bilgisini bulma
     let fragment = scraper::Html::parse_fragment(response);
-    let iftar = fragment.select(&match scraper::Selector::parse("div.tpt-cell[data-vakit-name='aksam'] .tpt-time") {
+    let selector = match scraper::Selector::parse("div.tpt-cell[data-vakit-name='aksam'] .tpt-time") {
         Ok(res) => res,
         Err(_) => {
             println!("");
-            println!(">>> HATA: İftar saati bulunamadı! Bu hatayı yapımcıya bildirmeniz önerilir.");
+            println!(">>> HATA: İftar saati bulunamadı! Tekrar deneyiniz.");
             return;
         },
-    }).next().unwrap().inner_html();
+    };
+    let iftar = fragment.select(&selector).next().unwrap().inner_html();
 
     // Zaman hesaplamaları
     let now = Local::now();
