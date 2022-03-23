@@ -23,8 +23,8 @@ lto = true
 panic = "abort"
 
 [dependencies]
-fltk = { version = "^1.3", features = ["use-ninja", "no-gdiplus", "no-images", "enable-glwindow"] }
-minreq = { version = "^2.3", features = ["https-native"] }
+fltk = { version = "^1.3", features = ["use-ninja"}
+minreq = { version = "^2.3", features = ["https"] }
 scraper = "^0.12"
 chrono = "^0.4"
 indexmap = "^1.8"
