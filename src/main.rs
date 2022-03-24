@@ -102,29 +102,36 @@ fn main() {
     fltk::app::set_visible_focus(false);
 
     // FLTK window
-    let mut ui_win = fltk::window::Window::default().with_size(270, 140).center_screen().with_label(&(APP_NAME.to_owned() + " v" + APP_VERSION)).center_screen();
+    let mut ui_win = fltk::window::Window::default().with_size(340, 140).center_screen().with_label(&(APP_NAME.to_owned() + " v" + APP_VERSION)).center_screen();
     ui_win.make_resizable(false);
     // ui_win.set_icon(Some(fltk::image::PngImage::from_data(include_bytes!("../icon.png")).unwrap()));
 
     // UI List Cities 
-    let mut ui_list_cities = fltk::misc::InputChoice::default().with_size(250, 30).with_pos(10, 10).with_label("");
+    let mut ui_list_cities = fltk::misc::InputChoice::default().with_size(320, 30).with_pos(10, 10).with_label("");
     ui_list_cities.set_tooltip("Konum Seçiniz");
     ui_list_cities.set_value("Konum Seçiniz");
     for (city, _) in cities.iter() {
         ui_list_cities.add(city);
     }
 
-    // UI Time
+    // UI Time Displays
     let mut ui_time = fltk::text::TextDisplay::default().with_size(100, 30).with_pos(10, 100).with_label("Sistem Saati");
     ui_time.set_buffer(fltk::text::TextBuffer::default());
     ui_time.set_text_size(20);
     fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), &("   ".to_owned() + &Local::now().format("%H:%M").to_string()[..])[..]);
-    let mut ui_time_iftar = fltk::text::TextDisplay::default().with_size(100, 30).with_pos(160, 100).with_label("İftar Vakti");
+    
+    let mut ui_time_iftar = fltk::text::TextDisplay::default().with_size(100, 30).with_pos(120, 100).with_label("İftar Vakti");
     ui_time_iftar.set_buffer(fltk::text::TextBuffer::default());
     ui_time_iftar.set_text_size(20);
     fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "   ##:##");
 
-    let mut ui_button_fetch = fltk::button::Button::default().with_size(75, 30).with_pos(98, 55).with_label("Kontrol Et");
+    let mut ui_time_left = fltk::text::TextDisplay::default().with_size(100, 30).with_pos(230, 100).with_label("İftara Kalan");
+    ui_time_left.set_buffer(fltk::text::TextBuffer::default());
+    ui_time_left.set_text_size(20);
+    fltk::text::TextBuffer::set_text(&mut ui_time_left.buffer().unwrap(), "   ##:##");
+
+    // UI Fetch Button
+    let mut ui_button_fetch = fltk::button::Button::default().with_size(75, 30).with_pos(130, 47).with_label("Kontrol Et");
     ui_button_fetch.set_callback({
         let mut wn = ui_win.clone();
         move |_| {
