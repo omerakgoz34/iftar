@@ -33,7 +33,7 @@ indexmap = "^1.8"
 winres = "^0.1"
 
 [package.metadata.winres]
-FileDescription = "iftar vaktini öğrenebileceğiniz küçük bir uygulama"
+FileDescription = "iftar"
 ProductName = "iftar"
 ProductVersion = "0.3.0.0"
 OriginalFilename = "iftar.exe"
