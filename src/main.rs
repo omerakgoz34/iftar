@@ -104,7 +104,7 @@ fn main() {
     // FLTK window
     let mut ui_win = fltk::window::Window::default().with_size(340, 140).center_screen().with_label(&(APP_NAME.to_owned() + " v" + APP_VERSION)).center_screen();
     ui_win.make_resizable(false);
-    // ui_win.set_icon(Some(fltk::image::PngImage::from_data(include_bytes!("../icon.png")).unwrap()));
+    ui_win.set_icon(Some(fltk::image::JpegImage::from_data(include_bytes!("../icon.jpg")).unwrap()));
 
     // UI List Cities 
     let mut ui_list_cities = fltk::misc::InputChoice::default().with_size(320, 30).with_pos(10, 10).with_label("");

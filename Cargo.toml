@@ -28,3 +28,13 @@ minreq = { version = "^2.3", features = ["https-native"] }
 scraper = "^0.12"
 chrono = "^0.4"
 indexmap = "^1.8"
+
+[target."cfg(target_os = \"windows\")".build-dependencies]
+winres = "^0.1"
+
+[package.metadata.winres]
+FileDescription = "iftar vaktini öğrenebileceğiniz küçük bir uygulama"
+ProductName = "iftar"
+ProductVersion = "0.3.0.0"
+OriginalFilename = "iftar.exe"
+LegalCopyright = "omerakgoz34 @ 2022"
