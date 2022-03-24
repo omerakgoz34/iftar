@@ -19,6 +19,8 @@
 * Daha iyi bir kalan süre göstergesi
 * Alarm sistemi. Ayarlanan süre aralıklarıyla bildirim gösterecek.
 * Android uygulama desteği
+* Exe ve pencere için simge?
+* Bir hata oluştuğunda kullanıcıya bildirilmesi
 
 ## İndirme Linkleri:
 [Windows amd64 v0.2.0 (GUI)](https://github.com/omerakgoz34/iftar/releases/download/v0.2.0/iftar_v0.2.0_windows_amd64.zip) ([Scoop Bucket](https://github.com/omerakgoz34/scoop-bucket))  
