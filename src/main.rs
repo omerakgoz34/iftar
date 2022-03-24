@@ -115,23 +115,22 @@ fn main() {
     }
 
     // UI Time
-    let mut ui_time = fltk::text::TextDisplay::default().with_size(100, 30).with_pos(10, 100).with_label("Saat");
+    let mut ui_time = fltk::text::TextDisplay::default().with_size(100, 30).with_pos(10, 100).with_label("Sistem Saati");
     ui_time.set_buffer(fltk::text::TextBuffer::default());
     ui_time.set_text_size(20);
-    fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), "   00:00");
-    let mut ui_time_iftar = fltk::text::TextDisplay::default().with_size(100, 30).with_pos(160, 100).with_label("İftar");
+    fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), &("   ".to_owned() + &Local::now().format("%H:%M").to_string()[..])[..]);
+    let mut ui_time_iftar = fltk::text::TextDisplay::default().with_size(100, 30).with_pos(160, 100).with_label("İftar Vakti");
     ui_time_iftar.set_buffer(fltk::text::TextBuffer::default());
     ui_time_iftar.set_text_size(20);
-    fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "   00:00");
-
-    // let input = fltk::input::Input::default().with_size(250, 30).with_pos(110, 10).with_label("Şehrin URL'si:");
+    fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "   ##:##");
 
     let mut ui_button_fetch = fltk::button::Button::default().with_size(75, 30).with_pos(98, 55).with_label("Kontrol Et");
     ui_button_fetch.set_callback({
         let mut wn = ui_win.clone();
         move |_| {
-            fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), "     .....");
-            fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "     .....");
+            let now = Local::now();
+            fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), "      ...");
+            fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "      ...");
             wn.set_cursor(fltk::enums::Cursor::Wait);
             let location_input = ui_list_cities.value().unwrap();
 
@@ -198,12 +197,12 @@ fn main() {
             println!("DEBUG >>> iftar: {}", iftar);
     
             // Zaman hesaplamaları
-            let now = Local::now();
             #[cfg(debug_assertions)]
             let iftar_split: Vec<&str> = iftar.split(":").collect();
             #[cfg(debug_assertions)]
             let iftar_time = Local.ymd(now.year(), now.month(), now.day()).and_hms(iftar_split[0].parse::<u32>().unwrap(), iftar_split[1].parse::<u32>().unwrap(), 0);
-    
+
+            // DEBUG
             #[cfg(debug_assertions)]
             {
                 println!("DEBUG >>> iftar_timestamp: {}", iftar_time);
@@ -211,9 +210,11 @@ fn main() {
                 println!("DEBUG >>> kalan_timestamp: {}", Local.timestamp(iftar_time.timestamp() - now.timestamp(), 0));
                 println!("DEBUG >>> geçen_timestamp: {}", Local.timestamp(now.timestamp() - iftar_time.timestamp(), 0));
             }
-    
+
+            // Sonuçları ekrana yazdırma
             fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), &("   ".to_owned() + &now.format("%H:%M").to_string()[..])[..]);
             fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), &("   ".to_string() + &iftar[..])[..]);
+
             #[cfg(debug_assertions)]
             {
                 println!("DEBUG >>> Saat: {}", now.format("%H:%M"));
