@@ -3,7 +3,7 @@
 **İftar vaktini öğrenebileceğiniz küçük bir uygulama**
 
 ## İndirme Linkleri:
-[Windows amd64 v0.2.0 (GUI)](https://github.com/omerakgoz34/iftar/releases/download/v0.2.0/iftar_v0.2.0_windows_amd64.zip) ([Scoop](https://github.com/omerakgoz34/iftar/raw/main/iftar.json))  
+[Windows amd64 v0.2.0 (GUI)](https://github.com/omerakgoz34/iftar/releases/download/v0.2.0/iftar_v0.2.0_windows_amd64.zip) ([Scoop Bucket](https://github.com/omerakgoz34/scoop-bucket))  
 [Linux amd64 v0.2.0 (GUI)](https://github.com/omerakgoz34/iftar/releases/download/v0.2.0/iftar_v0.2.0_linux_amd64.zip)  
 [macOS amd64 v0.2.0 (GUI)](https://github.com/omerakgoz34/iftar/releases/download/v0.2.0/iftar_v0.2.0_macos_amd64.zip)  
   
