@@ -20,7 +20,7 @@
 * Alarm sistemi. Ayarlanan süre aralıklarıyla bildirim gösterecek.
 * Android uygulama desteği
 * Exe ve pencere için simge?
-* Bir hata oluştuğunda kullanıcıya bildirilmesi
+* ~~Bir hata oluştuğunda kullanıcıya bildirilmesi~~
 
 ## İndirme Linkleri:
 [Windows amd64 v0.2.1(GUI)](https://github.com/omerakgoz34/iftar/releases/download/v0.2.1/iftar_v0.2.1_windows_amd64.zip) ([Scoop Bucket](https://github.com/omerakgoz34/scoop-bucket))  
