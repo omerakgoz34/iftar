@@ -19,7 +19,7 @@
 * Android uygulama desteği  
 
 ## İndirme Linkleri:
-[Windows amd64 v0.3.0(GUI)](https://github.com/omerakgoz34/iftar/releases/download/v0.3.0/iftar_v0.3.0_windows_amd64.zip) ([Scoop Bucket](https://github.com/omerakgoz34/scoop-bucket))  
+[Windows amd64 v0.3.0 (GUI)](https://github.com/omerakgoz34/iftar/releases/download/v0.3.0/iftar_v0.3.0_windows_amd64.zip) ([Scoop Bucket](https://github.com/omerakgoz34/scoop-bucket))  
 [Linux amd64 v0.3.0 (GUI)](https://github.com/omerakgoz34/iftar/releases/download/v0.3.0/iftar_v0.3.0_linux_amd64.zip)  
 [macOS amd64 v0.3.0 (GUI)](https://github.com/omerakgoz34/iftar/releases/download/v0.3.0/iftar_v0.3.0_macos_amd64.zip)  
   
