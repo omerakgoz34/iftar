@@ -143,6 +143,8 @@ fn main() {
                 Some(&res) => res,
                 _ => {
                     wn.set_cursor(fltk::enums::Cursor::Default);
+                    fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), "Hatalı");
+                    fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "Konum");
                     #[cfg(debug_assertions)]
                     println!("DEBUG >>> HATA: Girdiğiniz şehir bulunamadı! İsimleri bitişik ve küçük harflerle yazınız.");
                     return;
@@ -155,6 +157,8 @@ fn main() {
                 Ok(res) => res,
                 Err(_) => {
                     wn.set_cursor(fltk::enums::Cursor::Default);
+                    fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), "Bağlantı");
+                    fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "Hatası");
                     #[cfg(debug_assertions)]
                     println!("DEBUG >>> HATA: Sunucuya bağlanılamadı! İnternete bağlı olduğunuzdan emin olunuz.");
                     return;
@@ -166,6 +170,8 @@ fn main() {
                 Ok(res) => res,
                 Err(_) => {
                     wn.set_cursor(fltk::enums::Cursor::Default);
+                    fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), "Encode");
+                    fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "Hatası");
                     #[cfg(debug_assertions)]
                     println!("DEBUG >>> HATA: Sunucudan alınan veri okunamadı! (UTF-8 hatası)");
                     return;
@@ -179,6 +185,8 @@ fn main() {
                 Err(_) => {
                     wn.set_cursor(fltk::enums::Cursor::Default);
                     #[cfg(debug_assertions)]
+                    fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), "SiteEncode");
+                    fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "Hatası");
                     println!("DEBUG >>> HATA: İftar saati bulunamadı! Tekrar deneyiniz.");
                     return;
                 },
