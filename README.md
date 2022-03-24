@@ -21,6 +21,7 @@
 
 ## Ekran Görüntüleri
 ![ss1](https://github.com/omerakgoz34/iftar/raw/main/screenshots/ss1.jpg)  
+![ss2](https://github.com/omerakgoz34/iftar/raw/main/screenshots/ss2.jpg)  
   
 ## Android Termux Örneği
 https://youtu.be/tT9vjz2a9tM
