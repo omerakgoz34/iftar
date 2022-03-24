@@ -201,7 +201,6 @@ fn main() {
                 },
             };
             let iftar = fragment.select(&selector).next().unwrap().inner_html();
-            #[cfg(debug_assertions)]
     
             // Zaman hesaplamaları
             let iftar_split_time: Vec<&str> = iftar.split(":").collect();
