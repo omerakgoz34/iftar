@@ -118,11 +118,11 @@ fn main() {
     let mut ui_time = fltk::text::TextDisplay::default().with_size(100, 30).with_pos(10, 100).with_label("Saat");
     ui_time.set_buffer(fltk::text::TextBuffer::default());
     ui_time.set_text_size(20);
-    fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), "     .....");
+    fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), "   00:00");
     let mut ui_time_iftar = fltk::text::TextDisplay::default().with_size(100, 30).with_pos(160, 100).with_label("İftar");
     ui_time_iftar.set_buffer(fltk::text::TextBuffer::default());
     ui_time_iftar.set_text_size(20);
-    fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "     .....   ");
+    fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "   00:00");
 
     // let input = fltk::input::Input::default().with_size(250, 30).with_pos(110, 10).with_label("Şehrin URL'si:");
 
@@ -130,6 +130,8 @@ fn main() {
     ui_button_fetch.set_callback({
         let mut wn = ui_win.clone();
         move |_| {
+            fltk::text::TextBuffer::set_text(&mut ui_time.buffer().unwrap(), "     .....");
+            fltk::text::TextBuffer::set_text(&mut ui_time_iftar.buffer().unwrap(), "     .....");
             wn.set_cursor(fltk::enums::Cursor::Wait);
             let location_input = ui_list_cities.value().unwrap();
 
