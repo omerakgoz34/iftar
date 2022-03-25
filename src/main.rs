@@ -76,7 +76,11 @@ fn main() {
         "Muş" => "9755/mus-icin-namaz-vakti",
         "Nevşehir" => "9760/nevsehir-icin-namaz-vakti",
         "Niğde" => "9766/nigde-icin-namaz-vakti",
+
         "Ordu" => "9782/ordu-icin-namaz-vakti",
+        "Ordu -> İkizce" => "9777/ikizce-icin-namaz-vakti",
+        "Ordu -> Ünye" => "9783/unye-icin-namaz-vakti",
+
         "Osmaniye" => "9788/osmaniye-icin-namaz-vakti",
         "Rize" => "9799/rize-icin-namaz-vakti",
         "Sakarya" => "9807/sakarya-icin-namaz-vakti",
