@@ -2,7 +2,7 @@
 
 [package]
 name = "iftar"
-version = "0.3.0"
+version = "0.3.1"
 edition = "2021"
 authors = ["omerakgoz34 <omerakgoz34@gmail.com>"]
 
@@ -35,6 +35,6 @@ winres = "^0.1"
 [package.metadata.winres]
 FileDescription = "iftar"
 ProductName = "iftar"
-ProductVersion = "0.3.0.0"
+ProductVersion = "0.3.1.0"
 OriginalFilename = "iftar.exe"
 LegalCopyright = "omerakgoz34 @ 2022"
