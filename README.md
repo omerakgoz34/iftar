@@ -1,6 +1,6 @@
 # iftar
 
-**İftar vaktini öğrenebileceğiniz küçük bir uygulama.**
+**İftar vaktini ve ne kadar kaldığını öğrenebileceğiniz küçük bir uygulama.**
 
 ## Özellikler
 

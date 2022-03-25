@@ -1,5 +1,5 @@
 // Disable windows console on release builds
-#![cfg_attr(windows, cfg_attr(not(debug_assertions), windows_subsystem = "windows"))]
+#![cfg_attr(target_os = "windows", cfg_attr(not(debug_assertions), windows_subsystem = "windows"))]
 
 use fltk::prelude::*;
 use chrono::prelude::*;
